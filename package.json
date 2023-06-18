@@ -1,0 +1,22 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "namaste react by saiteja damaraju",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saitejadamaraju/namaste-react.git"
+  },
+  "author": "saiteja damaraju",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saitejadamaraju/namaste-react/issues"
+  },
+  "homepage": "https://github.com/saitejadamaraju/namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.9.2"
+  }
+}
