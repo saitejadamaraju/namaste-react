@@ -1,0 +1,83 @@
+what is Emmet?
+
+Emmet is a web development tool that speedup the process of writing HTML and CSS code.It provides a short hand syntax for writing markup 
+and allows developers to generate complex code.
+
+Example:'ul>li*3>a' gives an unordered list of three list elements.
+
+what is the difference between library and a framework?
+
+A library is a collection of prewritten code modules or functions that provide specific functionality.Developers can use libraries by inlcuding them in their 
+projects and invoking the relevant functions or methods when needed. Here the developers have more control over the flow and the code structure.They can be easily
+integrated into any project.
+
+Example: React.
+
+Framework is a structured software environment which provides and foundation for building applications.It has its own set of rules,conditions and tools
+to help developers create their applications.Developers build their applications within the framework's structure,following its conventions and utilizing its features.
+Here the code structure and flow is under the control of Framework.
+
+Example: Angular
+
+what is CDN?why do we use it?
+CDN stands for content delivery network.It is a distributed network of servers located in differenct geographical locations,
+designed to deliver web content more efficiently to users.
+
+CDN's are used to optimize content delivery,improve website performance,reduce latency,and ensure the availability of web content by caching and 
+distributing it across network of servers located strategically around the world.
+
+Why is React known as React?
+
+React, the JavaScript library for building user interfaces, is known as "React" due to its core concept of reacting to 
+changes in data.The name reflects the fundamental principle behind React's design and functionality.
+
+one of the key features of React is its use of a virtual representation of the user interface called the "virtual DOM" 
+for faster changes on DOM.Its name reflects the reactive nature and component-based philosophy that underlies the library's 
+design and functionality.
+
+
+what is cross-origin in script tag?
+
+cross-origin refers to situation where a page or a script loaded from one origin is trying to access resources which are
+available on other origin.By default same origin policy to restrict javascript code from accessing and manipulating resourcesfrom different
+origins.But by using cross-origin attribute in script tag we can enable cross-origin resource sharing.this helps in importing different libraries 
+in to our project and use them.
+
+what is the difference between React and React DOM?
+
+React and React DOM are related but distinct entities within the React ecosystem.
+
+React is a core JavaScript library for building user Interfaces and managing their state,while React DOM
+is a package that facilitates rendering React Components into the DOM for web applications.
+React DOM serves as a bridge between React and web browser allowing React components to be displayed as HTML elements 
+on a web page.
+
+
+what is the difference between react.development.js and react.production.js?
+react.dev.js is used when the application is in development and debugging phases.It provides a 
+non-minified and human readable version of React library.It provides additional warnings and error messages 
+to identify and diagnose the issues in the code.The file size is large comapared to prod file.
+
+react.production.js is used for production purposes mainly focuses on reducing file size and increasing
+performance.It is a minified and compressed version of React library.It removes development specific features like 
+warnings,prop type checking and runtime validation.It's file size is small and this minimizes the javascript
+payload delivered to client.
+
+what is async and defer?
+
+how the website loads internal/external scripts using script tag to displays content is through of HTML parsing
+HTML parsing has 2 steps 
+HTML script fetching and then executing
+
+when the html parsing is going on line by line and of the script tag with
+
+async attribute comes then the scripts mentioned in that tag is fetched parallely with html parsing and
+after fetching the scripts the html parsing stops then scripts are executed and the parsing resumes.
+
+defer attribute comes then the scripts mentioned in the tag is fetched parallely with html parsing and 
+and after completing of the html parsing the scripts are executed.
+
+if no attributes are mentioned in the script tag the html parsing stops as soon as the script tag comes and the scripts
+are fetched and executed and the html parsing resumes.
+
+
