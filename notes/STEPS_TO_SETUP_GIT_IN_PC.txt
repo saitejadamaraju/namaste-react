@@ -1,0 +1,13 @@
+STEPS TO SET UP GIT IN YOUR COMPUTER AND PUSH CODE TO YOUR REMOTE REPOSITORY
+
+->install git
+->set git in system variables
+->To make a secure connection between local to github repo we need to generate SSH private/public keys
+->go to project path and generate keys using "ssh-keygen -t ed25519 -C "<github-email>"" 
+-> press enter until the process is completed if you dont want to give any password. After this process you will have a key generated and kept in a file  
+   and stored in some location in your computer.
+-> to copy the key use command "Get-Content ~/.ssh/id_ed25519.pub | Set-Clipboard". This will copy the key to the clipboard.
+->after this login to your github account,go to profile->settings->ssh keys and then click on add ssh key
+->paste the key which is copied previoulsy in the clipboard and give the key a name and add the key.
+->now you can connect to your github account and push code.
+   
