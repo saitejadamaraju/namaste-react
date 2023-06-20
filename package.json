@@ -2,7 +2,6 @@
   "name": "namaste-react",
   "version": "1.0.0",
   "description": "namaste react by saiteja damaraju",
-  "main": "app.js",
   "scripts": {
     "test": "jest"
   },
@@ -17,6 +16,15 @@
   },
   "homepage": "https://github.com/saitejadamaraju/namaste-react#readme",
   "devDependencies": {
-    "parcel": "^2.9.2"
-  }
+    "parcel": "^2.9.2",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist":
+  [
+    "last 2 versions"
+  ]
 }

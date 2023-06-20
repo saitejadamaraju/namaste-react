@@ -1,4 +1,5 @@
-
+import React from "react";
+import ReactDOM from "react-dom/client";
 //create a div tag with parent and 2 childs and each child has 2 childs
 //in the createElement api there are three inputs
 //1.tag name 2.properties(it is an object) 3.content to put inside the element(a child tag or something)
