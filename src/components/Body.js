@@ -1,10 +1,15 @@
-import resList from "../utils/mockData";
-import ResCards from "../components/ResCards";
+import ResCards,{ withVegLabel} from "../components/ResCards";
 import { useEffect, useState } from "react";
 import Shimmer from "../components/Shimmer";
+import {Link} from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 
 const Body=()=>{
 
+  //console.log("body rendered");
+
+  const obj=[{lat:"17.385044",lon:"78.486671"},{lat:"12.9715987",lon:"77.5945627"}]
 
   const [ListOfRestaturants,setListOfRestaturants] = useState([]);
 
@@ -12,106 +17,136 @@ const Body=()=>{
   
   const [SearchValue,setSearchValue]=useState([]);
 
+  const [Location,setLocation]=useState(0);
+
+  const PromotedResCard=withVegLabel(ResCards);
+
+
    useEffect(()=>{
+     
       fetchData();
-    },[])
+
+      return ()=>{
+        //console.log("body unmounted");
+      }
+    },[Location])
    
+    //lat=12.9715987&lng=77.5945627
+    
    const fetchData= async ()=>{
-     const data= await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.385044&lng=78.486671&page_type=DESKTOP_WEB_LISTING");
+     const data= await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${obj[Location]?.lat}&lng=${obj[Location]?.lon}&page_type=DESKTOP_WEB_LISTING`);
 
      const json= await data.json();
-     console.log(json);
-     setListOfRestaturants(json?.data?.cards[2]?.data?.data?.cards);
-     setfilterList(json?.data?.cards[2]?.data?.data?.cards);
+     //console.log(json);
+    //  setListOfRestaturants(json?.data?.cards[2]?.data?.data?.cards);
+    //  setfilterList(json?.data?.cards[2]?.data?.data?.cards);
+    setListOfRestaturants(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setfilterList(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
 }
 
-// if(ListOfRestaturants.length===0)
-// {
-//   return <Shimmer/>;
-// }
+const onlineStatus=useOnlineStatus();
+
+if(onlineStatus==false){
+  return (<p>Your are Offline Please Check your internet connection.</p>)
+}
+
+if(ListOfRestaturants.length===0)
+{
+  return <Shimmer></Shimmer>;
+}
 
 
-    return ListOfRestaturants.length===0? <Shimmer/>: (
-       
-      <div className="body">
-        <div className="body-header">
 
-        <div className="filter">
+    return (
+      
 
-          <input type="checkbox" 
-          onChange={(e)=>{
-              console.log(e.target.checked);
-              if(e.target.checked){
-                let filteredListOfRestaturants=ListOfRestaturants.filter(
+      <div className="dark:bg-slate-700">
+
+        <div className="flex">
+
+          <div className="px-4">
+
+                  <input type="checkbox"
+                    onChange={(e)=>{
+                    //console.log(e.target.checked);
+                    if(e.target.checked){
+                          let filteredListOfRestaturants=ListOfRestaturants.filter(
               
-                  (res) => res.data.avgRating > 4
+                            (res) => res?.info?.avgRating > 4
                   
-                  );
-                setfilterList(filteredListOfRestaturants);
-              }
+                        );
+                    setfilterList(filteredListOfRestaturants);
+                 }
               else{
                 setfilterList(ListOfRestaturants);
               }
               
-          }}/>Top Restaturants
-{/*           
+              }}/> <span className="font-semibold dark:text-white">Top Restaturants</span>
+          </div>
 
-          <button
-          className="filter-btn"
-          onClick={() => {
-            let filteredListOfRestaturants=ListOfRestaturants.filter(
-              
-              (res) => res.data.avgRating > 4
-              
-              );
-            setfilterList(filteredListOfRestaturants);
-          }}
-          >
-            Top Rated Restaurants
-          </button> */}
-        </div>
-
-        <div className="search">
-         <input className="search-input"
-           type="text"
-           value={SearchValue}
-          onChange={(event)=>{
+          <div className="px-4 ">
+              <input className="border-solid border-2 border-black rounded-lg"
+                type="text"
+            value={SearchValue}
+            onChange={(event)=>{
 
             if(event.target.value==="")
             {
               setfilterList(ListOfRestaturants);
             }
 
-            console.log("on change ");
-            setSearchValue(event.target.value);
-            
-            // setListOfRestaturants(ListOfRestaturants.filter(
-            //   (res) => (res.data.name).toLowerCase().includes((event.target.value).toLowerCase()))); 
-           
-          
-            
-          }}
+            //console.log("on change ");
+            setSearchValue(event.target.value);            
+            }}
          
-         ></input>
+            ></input>
+
+          </div>
+
+          <div className="px-4 border-solid border-2 border-black rounded-lg bg-blue-200">
+            <button 
+            onClick={()=>{
+            //console.log("button clicked");
+            let filteredListOfRestaturants=ListOfRestaturants.filter(
+                (res) => (res?.info?.name).toLowerCase().includes((SearchValue).toLowerCase()));
+          
+            setfilterList(filteredListOfRestaturants);
+
+            }}>Search</button>
+          </div>
+
+          <div className="px-4">
+            <select name="location" className=" w-[200px] border-solid border-2 border-black"
+                onChange={(e)=>{
+                //console.log(e.target.value);
+                setLocation(e.target.value);
+            }}>
+              <option >Select</option>
+              <option value="0">Hyderabad</option>
+              <option value="1">Bangalore</option>
+            </select>
+          </div>
 
         </div>
-        <button 
-        onClick={()=>{
-          console.log("button clicked");
-          let filteredListOfRestaturants=ListOfRestaturants.filter(
-              (res) => (res.data.name).toLowerCase().includes((SearchValue).toLowerCase()));
-          //setListOfRestaturants(filteredListOfRestaturants);
-          setfilterList(filteredListOfRestaturants);
 
-        }}>Search</button>
-        </div>
-        <div className="res-container">
+        
+        <div className="flex flex-wrap m-2">
          {
-           filterList.map((restaurant)=> <ResCards key={restaurant.data.id} resData={restaurant}/> )
+           filterList.map((restaurant)=> <Link to={"/restaurant/"+restaurant?.info.id}  key={restaurant?.info.id} className="card-link">
+
+            {restaurant.info.veg ? (<PromotedResCard resData={restaurant?.info} ></PromotedResCard>):(<ResCards resData={restaurant?.info}/>)}
+             
+            </Link> )
          }
            
-        </div> 
+        </div>  
+
       </div>
+      
     )
   }
 

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "namaste react by saiteja damaraju",
   "scripts": {
-    "start":"parcel index.html",
-    "build":"parcel build index.html",
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -19,14 +19,19 @@
   "homepage": "https://github.com/saitejadamaraju/namaste-react#readme",
   "devDependencies": {
     "parcel": "^2.9.2",
-    "process": "^0.11.10"
+    "postcss": "^8.4.28",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.3"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.2",
+    "react-router-dom": "^6.14.2",
+    "react-shimmer": "^3.2.0"
   },
-  "browserslist":
-  [
+  "browserslist": [
     "last 2 versions"
   ]
 }

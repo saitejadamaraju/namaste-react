@@ -17,3 +17,11 @@ repository to track my react learnings
     
  
 */ 
+
+# Redux toolkit
+-install @reduxjs/toolkit and react-redux
+-build our store
+-connect our store to our app
+-slice cartslice
+-dispatch action
+-selector
