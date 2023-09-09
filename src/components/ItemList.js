@@ -41,7 +41,7 @@ const ItemList=({items,resData})=>{
     return (
       <div>
         {items.map((item)=>(
-            <div className="flex my-2 p-2 border-b-2 border-gray-100">
+            <div key={item?.card?.info?.id} data-testid="item" className="flex my-2 p-2 border-b-2 border-gray-100">
               <div className="w-9/12 text-left">
                 <h3 className="text-sm font-semibold py-2">{item?.card?.info?.name}-  ₹ { (item?.card?.info?.price )? (item?.card?.info?.price/100):(item?.card?.info?.defaultPrice/100)}</h3>
                 <p className="text-xs">{item?.card?.info?.description}</p>
@@ -52,7 +52,7 @@ const ItemList=({items,resData})=>{
                     <button className="w-16 mt-16 ml-12 font-bold text-white  bg-black rounded-lg"
                     onClick={()=>{
                         addCartItem(item);
-                    }}> add </button>
+                    }}>add</button>
                 </div>
 
                 <img

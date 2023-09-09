@@ -19,7 +19,7 @@ const CartItem=({item})=>{
 
 
     return(
-        <div className="flex">
+        <div  data-testid="cart-item" className="flex">
         
         <div className="w-9/12 p-2 m-2">
            <h4 className="font-semibold">{item?.name}</h4>

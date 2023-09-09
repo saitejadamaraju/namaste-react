@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const Header=()=>{
 
-  const[theme,setTheme]=useState("Light");
+  const[theme,setTheme]=useState("Dark");
 
   const data=useContext(UserContext);
   
@@ -32,17 +32,17 @@ const Header=()=>{
                     {
                        document.documentElement.classList.add('dark');
                        //document.getElementById("theme").classList.add('dark');
-                       document.getElementById("theme").innerText="Light🌝"
+                       //document.getElementById("theme").innerText="Light"
                        setTheme("Dark")
                     }
                     else{
                       document.documentElement.classList.remove('dark');
                        //document.getElementById("theme").classList.remove('dark');
-                       document.getElementById("theme").innerText="Dark🌚"
+                       //document.getElementById("theme").innerText="Dark🌚"
                        setTheme("Light")
                     }
                     
-                  }}>Dark🌚</button>
+                  }}>{theme}</button>
                 </li>
                 <li className="px-4  dark:text-white">
                   OnlineStatus:{onlineStatus?"🟢":"🔴"}

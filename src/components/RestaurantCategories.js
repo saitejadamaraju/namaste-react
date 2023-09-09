@@ -21,7 +21,7 @@ const RestaurantCategories=({data,showItems,setshowIndex,setcloseIndex,resData})
     return(
         <>
         
-        <div className=" w-6/12 mx-auto my-4 p-4 bg-gray-50 shadow-lg">
+        <div data-testid="category" className=" w-6/12 mx-auto my-4 p-4 bg-gray-50 shadow-lg">
             <div className="flex justify-between my-4 cursor-pointer" onClick={()=>{
                 
                 handleClick();

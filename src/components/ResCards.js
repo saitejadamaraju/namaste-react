@@ -10,7 +10,7 @@ const ResCards=(props)=>{
     //console.log("name is ",name);
  
    return (
-     <div className="w-[300px] p-4 m-4 bg-gray-300 rounded-lg hover:bg-gray-400 hover:border-2 hover:border-black dark:bg-slate-500">
+     <div data-testid="ResCard" className="w-[300px] p-4 m-4 bg-gray-300 rounded-lg hover:bg-gray-400 hover:border-2 hover:border-black dark:bg-slate-500">
       <div className="m-2">
       <img
         className="rounded-lg "

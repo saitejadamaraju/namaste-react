@@ -13,7 +13,7 @@ const RestaurantInfo=()=>{
     
     const resInfo=useRestaurantMenu(resId);
 
-    console.log("res Info is",resInfo?.cards[0]?.card?.card?.info);
+    //console.log("res Info is",resInfo?.cards[0]?.card?.card?.info);
 
     
     if(resInfo===null) return <Shimmer></Shimmer>
